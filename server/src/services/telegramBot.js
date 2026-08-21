@@ -213,11 +213,16 @@ const sendNotification = async (text) => {
     return;
   }
 
-  try {
-    await bot.sendMessage(env.TELEGRAM_CHAT_ID, text, { parse_mode: 'Markdown' });
-    console.log('[TELEGRAM NOTIFICATION] Lead successfully dispatched to Telegram admin.');
-  } catch (err) {
-    console.error('[TELEGRAM NOTIFICATION ERROR]:', err.message);
+  // Support multiple admin chat IDs separated by comma, semicolon or space
+  const chatIds = env.TELEGRAM_CHAT_ID.split(/[,;\s]+/).map(id => id.trim()).filter(Boolean);
+
+  for (const adminId of chatIds) {
+    try {
+      await bot.sendMessage(adminId, text, { parse_mode: 'Markdown' });
+      console.log(`[TELEGRAM NOTIFICATION] Lead successfully dispatched to admin ID: ${adminId}`);
+    } catch (err) {
+      console.error(`[TELEGRAM NOTIFICATION ERROR] Failed for ID ${adminId}:`, err.message);
+    }
   }
 };
 
