@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #07090E;
+  --bg-surface: #0F131C;
+  --bg-card: #161C28;
+  --border-color: #232C3F;
+  --text-heading: #F8FAFC;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --accent-emerald: #10B981;
+  --accent-cyan: #06B6D4;
+}
+
+html.light {
+  --bg-main: #F8FAFC;
+  --bg-surface: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --border-color: #E2E8F0;
+  --text-heading: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --accent-emerald: #059669;
+  --accent-cyan: #0284C7;
+}
+
+@layer base {
+  html.dark body {
+    background-color: #07090E;
+    color: #CBD5E1;
+  }
+
+  html.light body {
+    background-color: #F8FAFC;
+    color: #334155;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #07090E;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #232C3F;
+  border-radius: 4px;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}
+
+/* Premium Light Mode Specific Element Overrides */
+html.light .bg-dark-bg {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-dark-surface {
+  background-color: #F1F5F9 !important;
+}
+
+html.light .bg-dark-card {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .border-dark-border {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .text-white {
+  color: #0F172A !important;
+}
+
+html.light .text-slate-100 {
+  color: #0F172A !important;
+}
+
+html.light .text-slate-200 {
+  color: #1E293B !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+
+html.light .text-slate-500 {
+  color: #94A3B8 !important;
+}
+
+/* Light Mode Glassmorphism & Card Overrides */
+html.light .glass-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(15, 23, 42, 0.03) !important;
+}
+
+html.light .glass-card-hover:hover {
+  border-color: #059669 !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(5, 150, 105, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid #E2E8F0 !important;
+}
+
+/* Light Mode Badge Accent Styling */
+html.light .text-brand-emerald {
+  color: #059669 !important;
+}
+
+html.light .bg-brand-emerald {
+  background-color: #059669 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .border-brand-emerald\/30 {
+  border-color: rgba(5, 150, 105, 0.3) !important;
+}
+
+html.light .bg-brand-emerald\/10 {
+  background-color: #ECFDF5 !important;
+  color: #047857 !important;
+}
+
+/* Visual Terminal Graphic Light Mode Aesthetics */
+html.light .terminal-box {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .terminal-header {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light .terminal-body {
+  background-color: #FAFAFA !important;
+  color: #1E293B !important;
+}
+
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #059669 0%, #10B981 50%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.dark .gradient-text-emerald {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
