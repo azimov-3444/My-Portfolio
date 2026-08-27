@@ -208,20 +208,30 @@ const initTelegramBot = () => {
 };
 
 const sendNotification = async (text) => {
-  if (!bot || !env.TELEGRAM_CHAT_ID) {
-    console.log('[TELEGRAM NOTIFICATION] Bot or TELEGRAM_CHAT_ID is not configured. Omitted.');
+  const chatIdEnv = process.env.TELEGRAM_CHAT_ID || env.TELEGRAM_CHAT_ID;
+
+  if (!bot || !chatIdEnv) {
+    console.log('[TELEGRAM NOTIFICATION] Bot or TELEGRAM_CHAT_ID is not configured. Notification omitted.');
     return;
   }
 
   // Support multiple admin chat IDs separated by comma, semicolon or space
-  const chatIds = env.TELEGRAM_CHAT_ID.split(/[,;\s]+/).map(id => id.trim()).filter(Boolean);
+  const chatIds = chatIdEnv.split(/[,;\s]+/).map(id => id.trim()).filter(Boolean);
 
   for (const adminId of chatIds) {
     try {
       await bot.sendMessage(adminId, text, { parse_mode: 'Markdown' });
       console.log(`[TELEGRAM NOTIFICATION] Lead successfully dispatched to admin ID: ${adminId}`);
     } catch (err) {
-      console.error(`[TELEGRAM NOTIFICATION ERROR] Failed for ID ${adminId}:`, err.message);
+      console.warn(`[TELEGRAM NOTIFICATION MARKDOWN RETRY] Retrying plain text for ID ${adminId}:`, err.message);
+      try {
+        // Fallback without Markdown formatting so special characters like _, *, [ never cause 400 Bad Request
+        const plainText = text.replace(/\*/g, '').replace(/_/g, '').replace(/`/g, '');
+        await bot.sendMessage(adminId, plainText);
+        console.log(`[TELEGRAM NOTIFICATION FALLBACK SUCCESS] Dispatched to admin ID: ${adminId}`);
+      } catch (fallbackErr) {
+        console.error(`[TELEGRAM NOTIFICATION ERROR] Failed for ID ${adminId}:`, fallbackErr.message);
+      }
     }
   }
 };
