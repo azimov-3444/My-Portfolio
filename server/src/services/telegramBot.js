@@ -9,6 +9,14 @@ const { handleCollabStep, COLLAB_STEPS } = require('../bot/flows/collabFlow');
 
 let bot = null;
 
+const escapeHtml = (text) => {
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+};
+
 const initTelegramBot = () => {
   if (!env.BOT_TOKEN) {
     console.log('[TELEGRAM BOT] BOT_TOKEN is not set in .env. Bot initialization skipped.');
@@ -133,33 +141,33 @@ const initTelegramBot = () => {
       // Handle Confirmation Response ("✅ Yuborish", "✏️ Qayta kiritish")
       if (session.step === 99) {
         if (text === '✅ Yuborish') {
-          // Send formatted lead to Admin Telegram
+          // Send formatted lead to Admin Telegram in HTML format for 100% reliability
           const username = msg.from.username ? `@${msg.from.username}` : `User ID: ${msg.from.id}`;
           const flowName = session.flow === 'PROJECT' ? 'Web sayt buyurtmasi' : session.flow === 'HIRE' ? 'Ish taklifi (Job Offer)' : 'Hamkorlik (Collaboration)';
 
           let adminMessage = 
-            `🚀 *YANGI PORTFOLIO LEAD REQUEST*\n` +
+            `🚀 <b>YANGI PORTFOLIO LEAD REQUEST</b>\n` +
             `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-            `📌 *Turi:* ${flowName}\n` +
-            `👤 *Mijoz / Recruiter:* ${session.data.name || '-'}\n`;
+            `📌 <b>Turi:</b> ${escapeHtml(flowName)}\n` +
+            `👤 <b>Mijoz / Recruiter:</b> ${escapeHtml(session.data.name || '-')}\n`;
 
-          if (session.data.company) adminMessage += `🏢 *Kompaniya:* ${session.data.company}\n`;
-          if (session.data.projectType) adminMessage += `🌐 *Loyiha:* ${session.data.projectType}\n`;
-          if (session.data.position) adminMessage += `🎯 *Lavozim:* ${session.data.position}\n`;
-          if (session.data.collabType) adminMessage += `💡 *Hamkorlik turi:* ${session.data.collabType}\n`;
-          if (session.data.features) adminMessage += `📝 *Funksiyalar:* ${session.data.features}\n`;
-          if (session.data.workType) adminMessage += `📍 *Ish shakli:* ${session.data.workType}\n`;
-          if (session.data.description) adminMessage += `📝 *Tavsif:* ${session.data.description}\n`;
-          if (session.data.deadline) adminMessage += `⏱ *Deadline:* ${session.data.deadline}\n`;
-          if (session.data.budget) adminMessage += `💰 *Budjet / Maosh:* ${session.data.budget}\n`;
-          if (session.data.salaryDetails) adminMessage += `💰 *Maosh / Tavsif:* ${session.data.salaryDetails}\n`;
-          adminMessage += `📞 *Kiritilgan Aloqa:* ${session.data.contact || '-'}\n`;
-          if (session.data.additional) adminMessage += `💬 *Qo'shimcha:* ${session.data.additional}\n`;
+          if (session.data.company) adminMessage += `🏢 <b>Kompaniya:</b> ${escapeHtml(session.data.company)}\n`;
+          if (session.data.projectType) adminMessage += `🌐 <b>Loyiha:</b> ${escapeHtml(session.data.projectType)}\n`;
+          if (session.data.position) adminMessage += `🎯 <b>Lavozim:</b> ${escapeHtml(session.data.position)}\n`;
+          if (session.data.collabType) adminMessage += `💡 <b>Hamkorlik turi:</b> ${escapeHtml(session.data.collabType)}\n`;
+          if (session.data.features) adminMessage += `📝 <b>Funksiyalar:</b> ${escapeHtml(session.data.features)}\n`;
+          if (session.data.workType) adminMessage += `📍 <b>Ish shakli:</b> ${escapeHtml(session.data.workType)}\n`;
+          if (session.data.description) adminMessage += `📝 <b>Tavsif:</b> ${escapeHtml(session.data.description)}\n`;
+          if (session.data.deadline) adminMessage += `⏱ <b>Deadline:</b> ${escapeHtml(session.data.deadline)}\n`;
+          if (session.data.budget) adminMessage += `💰 <b>Budjet / Maosh:</b> ${escapeHtml(session.data.budget)}\n`;
+          if (session.data.salaryDetails) adminMessage += `💰 <b>Maosh / Tavsif:</b> ${escapeHtml(session.data.salaryDetails)}\n`;
+          adminMessage += `📞 <b>Kiritilgan Aloqa:</b> ${escapeHtml(session.data.contact || '-')}\n`;
+          if (session.data.additional) adminMessage += `💬 <b>Qo'shimcha:</b> ${escapeHtml(session.data.additional)}\n`;
 
           adminMessage += 
             `\n━━━━━━━━━━━━━━━━━━━━━━\n` +
-            `💬 *Telegram Profile:* ${username}\n` +
-            `🕐 *Qabul vaqti:* ${new Date().toLocaleString()}`;
+            `💬 <b>Telegram Profile:</b> ${escapeHtml(username)}\n` +
+            `🕐 <b>Qabul vaqti:</b> ${new Date().toLocaleString()}`;
 
           // Dispatch to Admin
           await sendNotification(adminMessage);
@@ -220,13 +228,12 @@ const sendNotification = async (text) => {
 
   for (const adminId of chatIds) {
     try {
-      await bot.sendMessage(adminId, text, { parse_mode: 'Markdown' });
+      await bot.sendMessage(adminId, text, { parse_mode: 'HTML' });
       console.log(`[TELEGRAM NOTIFICATION] Lead successfully dispatched to admin ID: ${adminId}`);
     } catch (err) {
-      console.warn(`[TELEGRAM NOTIFICATION MARKDOWN RETRY] Retrying plain text for ID ${adminId}:`, err.message);
+      console.warn(`[TELEGRAM NOTIFICATION HTML RETRY] Retrying plain text for ID ${adminId}:`, err.message);
       try {
-        // Fallback without Markdown formatting so special characters like _, *, [ never cause 400 Bad Request
-        const plainText = text.replace(/\*/g, '').replace(/_/g, '').replace(/`/g, '');
+        const plainText = text.replace(/<[^>]*>/g, '');
         await bot.sendMessage(adminId, plainText);
         console.log(`[TELEGRAM NOTIFICATION FALLBACK SUCCESS] Dispatched to admin ID: ${adminId}`);
       } catch (fallbackErr) {
