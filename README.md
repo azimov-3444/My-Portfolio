@@ -55,5 +55,6 @@ npm run dev
 
 - **Name**: Humoyun Azimov
 - **Email**: [azimovhumoyun3444@gmail.com](mailto:azimovhumoyun3444@gmail.com)
-- **Telegram**: [@totkogotiiskala](https://t.me/totkogotiiskala)
+- **Telegram Personal**: [@KyroX_org](https://t.me/KyroX_org)
+- **Telegram Bot**: [@kyrox_portfoliobot](https://t.me/kyrox_portfoliobot)
 - **GitHub**: [azimov-3444](https://github.com/azimov-3444/)

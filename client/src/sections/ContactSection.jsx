@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Send, Github, MessageSquare, Clock } from 'lucide-react';
+import { Mail, Send, Github, MessageSquare, Clock, Bot } from 'lucide-react';
 import { profileData } from '../data/profile';
 import { ProjectInquiryBuilder } from '../components/ProjectInquiryBuilder';
 import { useLanguage } from '../context/LanguageContext';
@@ -35,6 +35,46 @@ export const ContactSection = ({ onShowToast }) => {
               </h3>
 
               <div className="space-y-3">
+                {/* Personal Telegram Direct Contact */}
+                <a
+                  href={profileData.socials.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3.5 rounded-xl bg-dark-surface border border-dark-border hover:border-brand-emerald/50 transition-colors group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-brand-emerald group-hover:bg-brand-emerald group-hover:text-dark-bg transition-colors">
+                    <Send className="w-4 h-4" />
+                  </div>
+                  <div className="text-left font-sans">
+                    <span className="text-[11px] font-mono text-slate-400 block">
+                      Telegram Shaxsiy Akkaunt
+                    </span>
+                    <span className="text-xs font-semibold text-white group-hover:text-brand-emerald transition-colors">
+                      {profileData.socials.telegramUsername}
+                    </span>
+                  </div>
+                </a>
+
+                {/* Telegram Bot Assistant */}
+                <a
+                  href={profileData.socials.telegramBot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3.5 rounded-xl bg-dark-surface border border-dark-border hover:border-indigo-400/50 transition-colors group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                    <Bot className="w-4 h-4" />
+                  </div>
+                  <div className="text-left font-sans">
+                    <span className="text-[11px] font-mono text-slate-400 block">
+                      KyroX Telegram Bot Assistant
+                    </span>
+                    <span className="text-xs font-semibold text-white group-hover:text-indigo-400 transition-colors">
+                      {profileData.socials.telegramBotUsername}
+                    </span>
+                  </div>
+                </a>
+
                 {/* Email Direct Contact */}
                 <a
                   href={`mailto:${profileData.socials.email}`}
@@ -47,28 +87,8 @@ export const ContactSection = ({ onShowToast }) => {
                     <span className="text-[11px] font-mono text-slate-400 block">
                       {t('contact.emailLabel')}
                     </span>
-                    <span className="text-xs font-semibold text-white group-hover:text-brand-emerald transition-colors">
+                    <span className="text-xs font-semibold text-white group-hover:text-brand-emerald transition-colors truncate max-w-[210px] block">
                       {profileData.socials.email}
-                    </span>
-                  </div>
-                </a>
-
-                {/* Telegram Direct Contact */}
-                <a
-                  href={profileData.socials.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3.5 rounded-xl bg-dark-surface border border-dark-border hover:border-brand-emerald/50 transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-brand-emerald group-hover:bg-brand-emerald group-hover:text-dark-bg transition-colors">
-                    <Send className="w-4 h-4" />
-                  </div>
-                  <div className="text-left font-sans">
-                    <span className="text-[11px] font-mono text-slate-400 block">
-                      {t('contact.telegramLabel')}
-                    </span>
-                    <span className="text-xs font-semibold text-white group-hover:text-brand-emerald transition-colors">
-                      @totkogotiiskala
                     </span>
                   </div>
                 </a>

@@ -18,7 +18,10 @@ export const profileData = {
   ],
   socials: {
     github: "https://github.com/azimov-3444/",
-    telegram: "https://t.me/totkogotiiskala",
+    telegram: "https://t.me/KyroX_org",
+    telegramUsername: "@KyroX_org",
+    telegramBot: "https://t.me/kyrox_portfoliobot",
+    telegramBotUsername: "@kyrox_portfoliobot",
     email: "azimovhumoyun3444@gmail.com",
     linkedin: null
   },

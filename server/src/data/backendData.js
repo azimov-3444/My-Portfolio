@@ -7,7 +7,10 @@ const profileData = {
   bio: "Passionate Full-Stack Developer specialized in building responsive, high-performance web applications with React, JavaScript, and Node.js. Committed to writing modern, scalable, and maintainable code with exceptional UI/UX standards.",
   socials: {
     github: "https://github.com/azimov-3444/",
-    telegram: "https://t.me/totkogotiiskala",
+    telegram: "https://t.me/KyroX_org",
+    telegramUsername: "@KyroX_org",
+    telegramBot: "https://t.me/kyrox_portfoliobot",
+    telegramBotUsername: "@kyrox_portfoliobot",
     email: "azimovhumoyun3444@gmail.com",
     linkedin: null
   }
@@ -106,7 +109,7 @@ const skillsData = [
     items: [
       { name: "Node.js", level: "Intermediate", icon: "nodejs" },
       { name: "Express.js", level: "Intermediate", icon: "express" },
-      { name: "REST APIs", level: "Intermediate", icon: "api" },
+      { name: "REST APIs", level: "Intermediate", icon: "api text" },
       { name: "Nodemon & Dev Tools", level: "Intermediate", icon: "tools" }
     ]
   },

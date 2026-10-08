@@ -156,13 +156,13 @@ export const ProjectInquiryBuilder = ({ onShowToast }) => {
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
-              href={`https://t.me/totkogotiiskala?text=${encodeURIComponent(getBriefSummaryText())}`}
+              href={`https://t.me/KyroX_org?text=${encodeURIComponent(getBriefSummaryText())}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-xl bg-brand-emerald text-dark-bg font-bold text-xs flex items-center gap-2"
             >
               <Send className="w-4 h-4" />
-              <span>Telegram-da yuborish (@totkogotiiskala)</span>
+              <span>Telegram-da yuborish (@KyroX_org)</span>
             </a>
             <button
               onClick={handleCopyBrief}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Send, Github, MessageSquare } from 'lucide-react';
+import { ArrowRight, Send, Github, MessageSquare, Bot } from 'lucide-react';
 import { profileData } from '../data/profile';
 import { HeroProjectPreview } from '../components/HeroProjectPreview';
 import { useLanguage } from '../context/LanguageContext';
@@ -76,7 +76,31 @@ export const HeroSection = () => {
             </div>
 
             {/* Direct Links */}
-            <div className="flex items-center gap-4 pt-2 text-xs font-mono text-slate-400">
+            <div className="flex flex-wrap items-center gap-3.5 pt-2 text-xs font-mono text-slate-400">
+              <a
+                href={profileData.socials.telegram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
+              >
+                <Send className="w-4 h-4 text-brand-emerald" />
+                <span>Telegram (@KyroX_org)</span>
+              </a>
+
+              <span>•</span>
+
+              <a
+                href={profileData.socials.telegramBot}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white flex items-center gap-1.5 transition-colors text-indigo-400"
+              >
+                <Bot className="w-4 h-4 text-indigo-400" />
+                <span>Bot (@kyrox_portfoliobot)</span>
+              </a>
+
+              <span>•</span>
+
               <a
                 href={profileData.socials.github}
                 target="_blank"
@@ -85,16 +109,6 @@ export const HeroSection = () => {
               >
                 <Github className="w-4 h-4" />
                 <span>GitHub Profile</span>
-              </a>
-              <span>•</span>
-              <a
-                href={profileData.socials.telegram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white flex items-center gap-1.5 transition-colors"
-              >
-                <Send className="w-4 h-4 text-brand-emerald" />
-                <span>Telegram (@totkogotiiskala)</span>
               </a>
             </div>
 
