@@ -6,8 +6,11 @@ const { mainMenuKeyboard } = require('../bot/keyboards');
 const { handleProjectStep, PROJECT_STEPS } = require('../bot/flows/projectFlow');
 const { handleHireStep, HIRE_STEPS } = require('../bot/flows/hireFlow');
 const { handleCollabStep, COLLAB_STEPS } = require('../bot/flows/collabFlow');
+const { getServiceConfig, handleServiceStep } = require('../bot/flows/serviceFlow');
 
 let bot = null;
+let handlersRegistered = false;
+const pendingTelegramRequests = new Set();
 
 const escapeHtml = (text) => {
   if (!text) return '';
@@ -18,16 +21,33 @@ const escapeHtml = (text) => {
 };
 
 const initTelegramBot = () => {
+  if (bot) return bot;
+
   if (!env.BOT_TOKEN) {
-    console.log('[TELEGRAM BOT] BOT_TOKEN is not set in .env. Bot initialization skipped.');
-    return;
+    console.warn('[TELEGRAM BOT] BOT_TOKEN is not configured.');
+    return null;
   }
 
   try {
     const TelegramBot = require('node-telegram-bot-api');
-    bot = new TelegramBot(env.BOT_TOKEN, { polling: true });
+    // Webhook/serverless mode: Telegram pushes updates to the Vercel function.
+    bot = new TelegramBot(env.BOT_TOKEN, { polling: false });
 
-    console.log('[TELEGRAM BOT] Bot successfully initialized and polling started.');
+    // Keep Vercel's serverless function alive until Telegram API requests finish.
+    const originalSendMessage = bot.sendMessage.bind(bot);
+    bot.sendMessage = (...args) => {
+      const request = originalSendMessage(...args);
+      if (request && typeof request.then === 'function') {
+        pendingTelegramRequests.add(request);
+        request.then(
+          () => pendingTelegramRequests.delete(request),
+          () => pendingTelegramRequests.delete(request)
+        );
+      }
+      return request;
+    };
+
+    console.log('[TELEGRAM BOT] Bot initialized in webhook mode.');
 
     // 1. Welcome / Start Handler
     bot.onText(/\/(start|help)/, (msg) => {
@@ -90,6 +110,24 @@ const initTelegramBot = () => {
         return handleCollabStep(bot, chatId, session, null);
       }
 
+      const serviceButtons = {
+        '💻 Веб-Сайты': 'website',
+        '📲 Различные Приложения': 'app',
+        '📱 Телеграм Боты': 'telegram',
+        '🎥 ИИ-Видео': 'aiVideo',
+        '🖼 Логотипы': 'logo',
+        '🎞️ Презентации': 'presentation'
+      };
+
+      if (serviceButtons[text]) {
+        session.flow = 'SERVICE';
+        session.serviceType = serviceButtons[text];
+        session.step = 0;
+        session.data = {};
+        session.history = [];
+        return handleServiceStep(bot, chatId, session, null);
+      }
+
       if (text === '👨‍💻 Men haqimda' || text === '👨‍💻 About Me') {
         resetSession(chatId);
         const aboutText = 
@@ -132,6 +170,7 @@ const initTelegramBot = () => {
           if (session.flow === 'PROJECT') return handleProjectStep(bot, chatId, session, null);
           if (session.flow === 'HIRE') return handleHireStep(bot, chatId, session, null);
           if (session.flow === 'COLLAB') return handleCollabStep(bot, chatId, session, null);
+          if (session.flow === 'SERVICE') return handleServiceStep(bot, chatId, session, null);
         } else {
           resetSession(chatId);
           return bot.sendMessage(chatId, "Asosiy menyuga qaytdingiz.", { ...mainMenuKeyboard });
@@ -140,10 +179,16 @@ const initTelegramBot = () => {
 
       // Handle Confirmation Response ("✅ Yuborish", "✏️ Qayta kiritish")
       if (session.step === 99) {
-        if (text === '✅ Yuborish') {
+        if (text === '✅ Yuborish' || text === '✅ Отправить') {
           // Send formatted lead to Admin Telegram in HTML format for 100% reliability
           const username = msg.from.username ? `@${msg.from.username}` : `User ID: ${msg.from.id}`;
-          const flowName = session.flow === 'PROJECT' ? 'Web sayt buyurtmasi' : session.flow === 'HIRE' ? 'Ish taklifi (Job Offer)' : 'Hamkorlik (Collaboration)';
+          const flowName = session.flow === 'PROJECT'
+            ? 'Web sayt buyurtmasi'
+            : session.flow === 'HIRE'
+              ? 'Ish taklifi (Job Offer)'
+              : session.flow === 'COLLAB'
+                ? 'Hamkorlik (Collaboration)'
+                : `Xizmat buyurtmasi: ${getServiceConfig(session.serviceType)?.label || 'Xizmat'}`;
 
           let adminMessage = 
             `🚀 <b>YANGI PORTFOLIO LEAD REQUEST</b>\n` +
@@ -163,6 +208,18 @@ const initTelegramBot = () => {
           if (session.data.salaryDetails) adminMessage += `💰 <b>Maosh / Tavsif:</b> ${escapeHtml(session.data.salaryDetails)}\n`;
           adminMessage += `📞 <b>Kiritilgan Aloqa:</b> ${escapeHtml(session.data.contact || '-')}\n`;
           if (session.data.additional) adminMessage += `💬 <b>Qo'shimcha:</b> ${escapeHtml(session.data.additional)}\n`;
+
+          if (session.flow === 'SERVICE') {
+            const serviceConfig = getServiceConfig(session.serviceType);
+            adminMessage = `🛒 <b>YANGI XIZMAT BUYURTMASI</b>\n` + adminMessage;
+            adminMessage += '\n📋 <b>Xizmat tafsilotlari:</b>\n';
+            for (const [key, question] of serviceConfig.fields) {
+              if (session.data[key]) {
+                const fieldName = question.split(/[?\n]/)[0];
+                adminMessage += `• <b>${escapeHtml(fieldName)}:</b> ${escapeHtml(session.data[key])}\n`;
+              }
+            }
+          }
 
           adminMessage += 
             `\n━━━━━━━━━━━━━━━━━━━━━━\n` +
@@ -195,6 +252,8 @@ const initTelegramBot = () => {
         return handleHireStep(bot, chatId, session, text);
       } else if (session.flow === 'COLLAB') {
         return handleCollabStep(bot, chatId, session, text);
+      } else if (session.flow === 'SERVICE') {
+        return handleServiceStep(bot, chatId, session, text);
       } else {
         // Fallback for unhandled input
         return bot.sendMessage(
@@ -206,30 +265,41 @@ const initTelegramBot = () => {
 
     });
 
-    bot.on('polling_error', (error) => {
-      console.warn('[TELEGRAM BOT POLLING WARNING]:', error.message || error);
-    });
+    handlersRegistered = true;
 
   } catch (err) {
     console.error('[TELEGRAM BOT INIT ERROR]:', err.message);
+    bot = null;
   }
+
+  return bot;
+};
+
+const processTelegramUpdate = async (update) => {
+  const telegramBot = initTelegramBot();
+  if (!telegramBot || !handlersRegistered) {
+    throw new Error('Telegram bot is not configured.');
+  }
+  telegramBot.processUpdate(update);
+  await Promise.allSettled([...pendingTelegramRequests]);
 };
 
 const sendNotification = async (text) => {
   const chatIdEnv = process.env.TELEGRAM_CHAT_ID || env.TELEGRAM_CHAT_ID;
 
   if (!bot || !chatIdEnv) {
-    console.log('[TELEGRAM NOTIFICATION] Bot or TELEGRAM_CHAT_ID is not configured. Notification omitted.');
+    console.error('[TELEGRAM NOTIFICATION] Bot or TELEGRAM_CHAT_ID is not configured.');
     return;
   }
 
   // Support multiple admin chat IDs separated by comma, semicolon or space
   const chatIds = chatIdEnv.split(/[,;\s]+/).map(id => id.trim()).filter(Boolean);
+  console.log(`[TELEGRAM NOTIFICATION] Sending notification to ${chatIds.length} admin chat(s).`);
 
   for (const adminId of chatIds) {
     try {
       await bot.sendMessage(adminId, text, { parse_mode: 'HTML' });
-      console.log(`[TELEGRAM NOTIFICATION] Lead successfully dispatched to admin ID: ${adminId}`);
+      console.log(`[TELEGRAM NOTIFICATION] Successfully dispatched to admin chat: ${adminId}`);
     } catch (err) {
       console.warn(`[TELEGRAM NOTIFICATION HTML RETRY] Retrying plain text for ID ${adminId}:`, err.message);
       try {
@@ -245,5 +315,6 @@ const sendNotification = async (text) => {
 
 module.exports = {
   initTelegramBot,
+  processTelegramUpdate,
   sendNotification
 };

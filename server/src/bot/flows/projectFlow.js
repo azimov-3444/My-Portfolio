@@ -1,4 +1,4 @@
-const { navKeyboard, budgetKeyboard, confirmKeyboard } = require('../keyboards');
+const { navKeyboard, noReplyKeyboard, budgetKeyboard, confirmKeyboard, websiteTypeKeyboard, commonFeatureKeyboard } = require('../keyboards');
 
 const PROJECT_STEPS = [
   {
@@ -9,12 +9,12 @@ const PROJECT_STEPS = [
   {
     key: 'projectType',
     prompt: "🌐 *2/7 — Qanday loyiha yoki website kerak?*\n\n_Masalan: E-commerce internet do'kon, Landing Page, Ta'lim portali, Korporativ sayt..._",
-    keyboard: navKeyboard
+    keyboard: websiteTypeKeyboard
   },
   {
     key: 'features',
     prompt: "📝 *3/7 — Website'da qanday asosiy funksiyalar bo'lishi kerak?*\n\n_Masalan: To'lov tizimlari (Click/Payme), Admin panel, Qidiruv, Dark mode, Telegram bot integratsiyasi..._",
-    keyboard: navKeyboard
+    keyboard: commonFeatureKeyboard
   },
   {
     key: 'deadline',
@@ -34,7 +34,7 @@ const PROJECT_STEPS = [
   {
     key: 'additional',
     prompt: "💬 *7/7 — Qo'shimcha ma'lumot yoki alohida talablaringiz bormi?*\n\n_Agar bo'lmasa 'Yo'q' deb yozishingiz mumkin._",
-    keyboard: navKeyboard
+    keyboard: noReplyKeyboard
   }
 ];
 

@@ -1,36 +1,83 @@
 export const skillsCategories = [
   {
-    title: "Frontend Core",
-    icon: "Layout",
-    description: "Building responsive, fast, and modern client-side user interfaces",
+    title: "Frontend Engineering",
+    description: "Building responsive, modern, and stateful user interfaces",
     skills: [
-      { name: "React", badge: "Core Stack", description: "Hooks, Context API, Component Architecture, State Management", highlight: true },
-      { name: "JavaScript (ES6+)", badge: "Core Language", description: "Async/Await, Promises, Closures, DOM, ES Modules", highlight: true },
-      { name: "JSX", badge: "Templating", description: "Declarative UI rendering, dynamic components, conditional logic", highlight: true },
-      { name: "HTML5 & CSS3", badge: "Foundational", description: "Semantic markup, Flexbox, Grid, CSS Variables, Animations", highlight: false },
-      { name: "Tailwind CSS", badge: "Styling", description: "Utility-first design, dark mode implementation, custom themes", highlight: true }
+      {
+        name: "React",
+        badge: "Core Library",
+        description: "Component architecture, hooks, state management, and view routing.",
+        connectedProject: "999 Premium Tools & LUMOS SCHOOL",
+        liveUrl: "https://999premiumtools.com/"
+      },
+      {
+        name: "JavaScript (ES6+)",
+        badge: "Core Language",
+        description: "Async/await, DOM APIs, ES modules, array methods, closures.",
+        connectedProject: "All Portfolio Projects",
+        liveUrl: "https://kyrox-portfolio.netlify.app/"
+      },
+      {
+        name: "Tailwind CSS & CSS3",
+        badge: "Styling System",
+        description: "Utility-first layouts, dark/light themes, flexbox, CSS grid, responsive design.",
+        connectedProject: "LUMOS SCHOOL & Portfolio Workshop",
+        liveUrl: "https://lumos-school.vercel.app/"
+      }
     ]
   },
   {
     title: "Backend Architecture",
-    icon: "Server",
-    description: "Designing RESTful APIs and server-side backend logic",
+    description: "Designing RESTful APIs and server-side workflows",
     skills: [
-      { name: "Node.js", badge: "Runtime", description: "Server-side JavaScript execution, file system, module system", highlight: true },
-      { name: "Express.js", badge: "Framework", description: "REST API routing, controllers, middleware, error handling", highlight: true },
-      { name: "REST APIs", badge: "Architecture", description: "JSON data exchange, status codes, CORS, endpoint design", highlight: true },
-      { name: "Nodemon & Dev Tools", badge: "Workflows", description: "Development server reloading, environment configuration", highlight: false }
+      {
+        name: "Node.js",
+        badge: "Runtime Environment",
+        description: "Server-side execution, asynchronous event loops, module architecture.",
+        connectedProject: "Portfolio Express API & Telegram Bot",
+        liveUrl: null
+      },
+      {
+        name: "Express.js",
+        badge: "Backend Framework",
+        description: "RESTful API routes, request validation, middleware, rate limiting.",
+        connectedProject: "Portfolio Backend System",
+        liveUrl: null
+      },
+      {
+        name: "REST APIs & Telegram API",
+        badge: "API Architecture",
+        description: "JSON endpoints, CORS policies, Telegram Bot API polling & lead alerts.",
+        connectedProject: "Portfolio Inquiry & Telegram Bot",
+        liveUrl: null
+      }
     ]
   },
   {
-    title: "Tools & Ecosystem",
-    icon: "Cpu",
-    description: "Version control, build tools, and cloud hosting platforms",
+    title: "Tools & Deployment",
+    description: "Version control, build automation, and cloud hosting",
     skills: [
-      { name: "Git", badge: "Version Control", description: "Branching strategies, commits, conflict resolution", highlight: false },
-      { name: "GitHub", badge: "Collaboration", description: "Repository management, open-source workflow, pull requests", highlight: true },
-      { name: "Vite", badge: "Build Tool", description: "Fast HMR dev server, optimized production bundling", highlight: true },
-      { name: "Netlify & Vercel", badge: "Deployment", description: "Continuous deployment, static hosting, environment variables", highlight: false }
+      {
+        name: "Git & GitHub",
+        badge: "Version Control",
+        description: "Structured commits, feature branches, repository management.",
+        connectedProject: "azimov-3444 / My-Portfolio",
+        liveUrl: "https://github.com/azimov-3444/My-Portfolio"
+      },
+      {
+        name: "Vite",
+        badge: "Build Tool",
+        description: "Fast HMR development server and production bundle optimization.",
+        connectedProject: "LUMOS SCHOOL & Portfolio Client",
+        liveUrl: "https://lumos-school.vercel.app/"
+      },
+      {
+        name: "Netlify & Vercel",
+        badge: "Deployment Platforms",
+        description: "Static site hosting, SPA redirects (`netlify.toml`), environment variables.",
+        connectedProject: "KyroX Portfolio & Live Demos",
+        liveUrl: "https://kyrox-portfolio.netlify.app/"
+      }
     ]
   }
 ];

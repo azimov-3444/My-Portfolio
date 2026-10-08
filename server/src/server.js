@@ -1,11 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const https = require('https');
-const http = require('http');
 const env = require('./config/env');
 const apiRoutes = require('./routes/apiRoutes');
-const { initTelegramBot } = require('./services/telegramBot');
 
 const app = express();
 
@@ -45,28 +42,12 @@ app.use((req, res) => {
   });
 });
 
-// Start Express Server
-const PORT = env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`=================================================`);
-  console.log(`🚀 Portfolio Express Server running on port ${PORT}`);
-  console.log(`🌐 Base API URL: http://localhost:${PORT}/api`);
-  console.log(`=================================================`);
+// Local development only. Vercel imports this file as a serverless app.
+if (require.main === module) {
+  const PORT = env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Portfolio Express Server running on port ${PORT}`);
+  });
+}
 
-  // Initialize Telegram Bot if configured
-  initTelegramBot();
-
-  // Self-Ping Keep-Alive mechanism for cloud hosting (Render Free Tier)
-  const externalUrl = process.env.RENDER_EXTERNAL_URL || process.env.SERVER_URL;
-  if (externalUrl) {
-    console.log(`[KEEP-ALIVE] Auto-ping initialized for: ${externalUrl}`);
-    setInterval(() => {
-      const client = externalUrl.startsWith('https') ? https : http;
-      client.get(`${externalUrl}/health`, (res) => {
-        console.log(`[KEEP-ALIVE PING] Auto-pinged ${externalUrl}/health - Status: ${res.statusCode}`);
-      }).on('error', (err) => {
-        console.warn(`[KEEP-ALIVE PING ERROR]:`, err.message);
-      });
-    }, 10 * 60 * 1000); // Ping every 10 minutes to prevent sleep
-  }
-});
+module.exports = app;

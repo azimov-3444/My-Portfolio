@@ -5,8 +5,8 @@
 :root {
   --bg-main: #07090E;
   --bg-surface: #0F131C;
-  --bg-card: #161C28;
-  --border-color: #232C3F;
+  --bg-card: #141A26;
+  --border-color: #20293A;
   --text-heading: #F8FAFC;
   --text-body: #CBD5E1;
   --text-muted: #94A3B8;
@@ -15,7 +15,7 @@
 }
 
 html.light {
-  --bg-main: #F8FAFC;
+  --bg-main: #FAFAFC;
   --bg-surface: #F1F5F9;
   --bg-card: #FFFFFF;
   --border-color: #E2E8F0;
@@ -33,8 +33,19 @@ html.light {
   }
 
   html.light body {
-    background-color: #F8FAFC;
+    background-color: #FAFAFC;
     color: #334155;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #10B981;
+    outline-offset: 2px;
+  }
+
+  html.light :focus-visible {
+    outline: 2px solid #059669;
+    outline-offset: 2px;
   }
 }
 
@@ -51,7 +62,7 @@ html.light ::-webkit-scrollbar-track {
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #232C3F;
+  background: #20293A;
   border-radius: 4px;
 }
 html.light ::-webkit-scrollbar-thumb {
@@ -63,9 +74,48 @@ html.light ::-webkit-scrollbar-thumb {
   background: #10B981;
 }
 
-/* Premium Light Mode Specific Element Overrides */
+/* Workshops & Product Surfaces */
+.workshop-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.dark .workshop-card {
+  background-color: #111622;
+  border: 1px solid #1E2738;
+}
+
+html.dark .workshop-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.4);
+}
+
+html.light .workshop-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05);
+}
+
+html.light .workshop-card:hover {
+  border-color: #059669;
+  box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.08);
+}
+
+/* Subtle Text Gradient */
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 60%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .gradient-text-emerald {
+  background: linear-gradient(135deg, #059669 0%, #10B981 60%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light Mode Specific Utility Classes */
 html.light .bg-dark-bg {
-  background-color: #F8FAFC !important;
+  background-color: #FAFAFC !important;
 }
 
 html.light .bg-dark-surface {
@@ -74,7 +124,7 @@ html.light .bg-dark-surface {
 
 html.light .bg-dark-card {
   background-color: #FFFFFF !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05) !important;
 }
 
 html.light .border-dark-border {
@@ -105,26 +155,6 @@ html.light .text-slate-500 {
   color: #94A3B8 !important;
 }
 
-/* Light Mode Glassmorphism & Card Overrides */
-html.light .glass-card {
-  background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(15, 23, 42, 0.03) !important;
-}
-
-html.light .glass-card-hover:hover {
-  border-color: #059669 !important;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(5, 150, 105, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-}
-
-html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(16px);
-  border: 1px solid #E2E8F0 !important;
-}
-
-/* Light Mode Badge Accent Styling */
 html.light .text-brand-emerald {
   color: #059669 !important;
 }
@@ -134,40 +164,11 @@ html.light .bg-brand-emerald {
   color: #FFFFFF !important;
 }
 
-html.light .border-brand-emerald\/30 {
-  border-color: rgba(5, 150, 105, 0.3) !important;
-}
-
 html.light .bg-brand-emerald\/10 {
   background-color: #ECFDF5 !important;
   color: #047857 !important;
 }
 
-/* Visual Terminal Graphic Light Mode Aesthetics */
-html.light .terminal-box {
-  background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08) !important;
-}
-
-html.light .terminal-header {
-  background-color: #F1F5F9 !important;
-  border-color: #E2E8F0 !important;
-}
-
-html.light .terminal-body {
-  background-color: #FAFAFA !important;
-  color: #1E293B !important;
-}
-
-.gradient-text-emerald {
-  background: linear-gradient(135deg, #059669 0%, #10B981 50%, #047857 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-html.dark .gradient-text-emerald {
-  background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+html.light .border-brand-emerald\/30 {
+  border-color: rgba(5, 150, 105, 0.3) !important;
 }

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './sections/HeroSection';
+import { ProjectsSection } from './sections/ProjectsSection';
+import { FeaturedCaseStudy } from './components/FeaturedCaseStudy';
 import { AboutSection } from './sections/AboutSection';
 import { SkillsSection } from './sections/SkillsSection';
-import { ProjectsSection } from './sections/ProjectsSection';
-import { JourneySection } from './sections/JourneySection';
-import { GitHubSection } from './sections/GitHubSection';
 import { ContactSection } from './sections/ContactSection';
 import { Footer } from './sections/Footer';
 import { Toast } from './components/Toast';
@@ -14,7 +13,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 
 export const AppContent = () => {
-  const sectionIds = ['hero', 'about', 'skills', 'projects', 'journey', 'contact'];
+  const sectionIds = ['hero', 'projects', 'case-study', 'about', 'skills', 'inquiry'];
   const activeSection = useActiveSection(sectionIds, 150);
 
   const [toast, setToast] = useState(null);
@@ -26,21 +25,31 @@ export const AppContent = () => {
   return (
     <div className="min-h-screen bg-dark-bg text-slate-100 font-sans selection:bg-brand-emerald selection:text-dark-bg relative transition-colors duration-300">
       
-      {/* Top Navbar */}
+      {/* 1. Compact Navigation */}
       <Navbar activeSection={activeSection} />
 
-      {/* Main Content Layout Flow */}
+      {/* Main Digital Workshop Section Flow */}
       <main>
+        {/* 2. Hero with real project preview */}
         <HeroSection />
-        <AboutSection />
-        <SkillsSection />
+
+        {/* 3. Selected projects */}
         <ProjectsSection />
-        <JourneySection />
-        <GitHubSection />
+
+        {/* 4. Detailed featured case study with "How I built it" mode */}
+        <FeaturedCaseStudy />
+
+        {/* 5. Concise personal introduction & working process */}
+        <AboutSection />
+
+        {/* 6. Skills connected to actual project evidence */}
+        <SkillsSection />
+
+        {/* 7. Project inquiry builder & direct contact options */}
         <ContactSection onShowToast={showToast} />
       </main>
 
-      {/* Footer */}
+      {/* 8. Minimal Footer */}
       <Footer />
 
       {/* Toast Notification Container */}

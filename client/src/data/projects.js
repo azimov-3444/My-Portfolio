@@ -2,91 +2,116 @@ export const projectsData = [
   {
     id: "999-premium-tools",
     title: "999 Premium Tools",
-    subtitle: "Commercial Jewelry Tools & Equipment Platform",
-    shortDescription: "Commercial web application engineered for professional jewelry manufacturing tools and equipment showcase.",
-    fullDescription: "999 Premium Tools is a production commercial project built specifically for jewelry masters and professional tool suppliers. It features high-resolution product showcases, structured catalog navigation, optimized page loading, and responsive mobile architecture.",
-    category: "Commercial Project",
+    subtitle: "Jewelry Tools & Manufacturing Equipment Catalog",
+    categoryKey: "projects.commercial",
+    categoryType: "Commercial Production Platform",
     featured: true,
     liveUrl: "https://999premiumtools.com/",
-    githubUrl: null, // No GitHub link provided, handled cleanly in UI
-    image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1200&auto=format&fit=crop",
+    githubUrl: null, // Commercial client platform
+    shortDescription: "Production web platform built for professional jewelry masters and tool suppliers.",
+    fullDescription: "999 Premium Tools is a commercial jewelry equipment showcase platform. It features structured catalog categories, client-side product filtering, responsive layout design, and fast specification modal inspection.",
     technologies: ["React", "JavaScript", "HTML5", "CSS3 / Tailwind", "Node.js", "REST API"],
+    verifiedContribution: "Lead Frontend Developer (Catalog UI/UX, product filtering, mobile layout)",
     highlights: [
-      "Commercial product showcase with high-definition assets",
-      "Dynamic category filtering & instant client-side search UX",
-      "Fast layout rendering optimized across mobile, tablet, and desktop",
-      "Robust UX hierarchy for rapid customer navigation"
+      "Categorized jewelry tool catalog with instant client-side search UX",
+      "Optimized visual lazy loading for high-resolution equipment assets",
+      "Responsive navigation tailored for desktop and mobile jewelry buyers"
     ],
     caseStudy: {
-      challenge: "Creating a sleek commercial catalog that presents technical jewelry equipment clearly to buyers while maintaining sub-second load times.",
-      solution: "Implemented modular React components with optimized visual lazy loading, responsive grid structures, and intuitive touch controls."
+      context: "Commercial equipment catalog designed for jewelry masters and professional tool suppliers.",
+      problem: "Presenting technical machinery and jewelry tools clearly without slowing down page load speeds.",
+      solution: "Engineered modular React components, client-side category filtering, and lazy loading for visual assets.",
+      role: "Lead Frontend Developer responsible for UI layout, state management, and touch interactions.",
+      outcomes: [
+        "Instant client-side equipment sorting by category",
+        "Fast responsive navigation across desktop and mobile devices",
+        "Clear technical specification presentation for buyers"
+      ]
     }
   },
   {
     id: "lumos-school",
     title: "LUMOS SCHOOL",
-    subtitle: "Modern Educational Platform Concept",
-    description: "An interactive, student-centric web platform designed for modern educational institutions.",
-    shortDescription: "Modern education platform UI showcasing interactive course catalogs, student pathways, and responsive dashboard design.",
-    fullDescription: "LUMOS SCHOOL is a web platform concept built to deliver a seamless learning experience. Designed with modern educational workflows, course structures, clear visual navigation, and engaging interactive elements.",
-    category: "Education Platform",
+    subtitle: "Modern Educational Portal Concept",
+    categoryKey: "projects.education",
+    categoryType: "Deployed Education Concept",
     featured: true,
     liveUrl: "https://lumos-school.vercel.app/",
     githubUrl: null,
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1200&auto=format&fit=crop",
+    shortDescription: "Interactive educational platform interface featuring course catalogs and student pathways.",
+    fullDescription: "LUMOS SCHOOL is a deployed web application concept demonstrating educational portal workflows, course curriculum navigation, clear typography hierarchy, and accessible student user interfaces.",
     technologies: ["React", "JSX", "JavaScript", "Tailwind CSS", "Vite"],
+    verifiedContribution: "Frontend Developer (UI layout, course dashboard structure, responsive design)",
     highlights: [
-      "Intuitive student dashboard design & course pathway visualization",
-      "Fluid micro-interactions and accessible color palettes",
-      "Mobile-first responsive structure tailored for learning on the go"
+      "Student dashboard UI with course pathway navigation",
+      "Accessible color palettes and structured visual hierarchy",
+      "Mobile-first responsive architecture designed for mobile learning"
     ],
     caseStudy: {
-      challenge: "Designing an educational portal that remains visually engaging without overwhelming students with cluttered information.",
-      solution: "Utilized clean component layout, custom section hierarchy, and subtle CSS transitions for smooth navigation."
+      context: "Concept web application designed for modern educational institutions.",
+      problem: "Creating an engaging student portal without cluttering the screen with dense course material.",
+      solution: "Structured course catalog navigation using clean React components and utility-first Tailwind CSS.",
+      role: "Frontend Developer crafting the client UI layout and component hierarchy.",
+      outcomes: [
+        "Clean curriculum layout with intuitive navigation",
+        "Accessible visual hierarchy across all device viewports"
+      ]
     }
   },
   {
     id: "fateleaf-tea-destiny",
     title: "FateLeaf: Tea & Destiny",
-    subtitle: "Interactive Storytelling & Themed Web App",
-    shortDescription: "Atmospheric web application combining tea culture with interactive fortune-telling visual experiences.",
-    fullDescription: "FateLeaf is a unique themed web application exploring the concept of tea leaves and destiny. It features custom visual themes, responsive animation state flows, and interactive reading mechanics.",
-    category: "Creative Web App",
+    subtitle: "Interactive Storytelling Web App",
+    categoryKey: "projects.creative",
+    categoryType: "Deployed Creative Concept",
     featured: false,
     liveUrl: "https://frontend-six-mu-9i5b5beol6.vercel.app/",
     githubUrl: null,
-    image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1200&auto=format&fit=crop",
-    technologies: ["React", "JavaScript", "HTML5", "CSS3", "Interactive State"],
+    shortDescription: "Themed interactive web experience combining tea culture aesthetics with step-by-step reading flows.",
+    fullDescription: "FateLeaf is a themed web application concept exploring tea leaf reading. Features custom dark aesthetic styling, step-by-step state transitions, and responsive micro-interactions.",
+    technologies: ["React", "JavaScript", "HTML5", "CSS3", "State Management"],
+    verifiedContribution: "UI/UX & Frontend Developer (Stateful interaction flow, dark mode styling)",
     highlights: [
       "Custom atmospheric visual styling & dark mode aesthetics",
-      "Multi-step interactive tea leaf fortune flow",
-      "Smooth state animations and intuitive feedback loops"
+      "Multi-step interactive reading state flow",
+      "Fluid state animations and responsive UI adaptation"
     ],
     caseStudy: {
-      challenge: "Building a fluid, story-driven interaction loop with React state management.",
-      solution: "Engineered modular stateful views with dynamic step transitions."
+      context: "Creative concept web application focused on interactive storytelling.",
+      problem: "Building a multi-step interactive state flow that feels seamless and atmospheric.",
+      solution: "Managed step-by-step view transitions cleanly with React local state.",
+      role: "UI/UX & Frontend Developer.",
+      outcomes: [
+        "Atmospheric interactive user flow with clear step indicators"
+      ]
     }
   },
   {
     id: "frontend-showcase",
-    title: "Frontend Showcase",
-    subtitle: "Modern Component & UI Architecture Showcase",
-    shortDescription: "Comprehensive frontend application demonstrating modern UI layout patterns, responsive design, and component reusability.",
-    fullDescription: "Frontend Showcase is an interactive showcase application highlighting complex frontend layouts, stateful controls, modern CSS layout techniques, and performant component patterns.",
-    category: "Frontend Showcase",
+    title: "Frontend Component Showcase",
+    subtitle: "UI Component & Layout Laboratory",
+    categoryKey: "projects.showcase",
+    categoryType: "Component Laboratory",
     featured: false,
     liveUrl: "https://magenta-conkies-e014b0.netlify.app/",
     githubUrl: null,
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+    shortDescription: "Frontend laboratory demonstrating modular component patterns and responsive CSS layouts.",
+    fullDescription: "Frontend Showcase is an experimental component laboratory built to test and demonstrate reusable UI layout patterns, responsive grid systems, and stateful controls.",
     technologies: ["React", "JavaScript", "JSX", "CSS Modules", "HTML5"],
+    verifiedContribution: "Developer (Component patterns, layout grid experiments)",
     highlights: [
-      "Advanced React component structure & modular design system",
-      "Interactive UI elements with responsive grid adaptation",
-      "Subtle micro-interactions enhancing user engagement"
+      "Modular React component structure & reusable design patterns",
+      "Responsive grid adaptations for complex dashboard cards",
+      "Clean prop interfaces for isolated component testing"
     ],
     caseStudy: {
-      challenge: "Testing and demonstrating reusable UI component design patterns across multiple screen sizes.",
-      solution: "Created an isolated modular structure focusing on clean prop interfaces and utility styling."
+      context: "Internal component laboratory for testing UI design patterns.",
+      problem: "Testing reusable React UI patterns across various screen resolutions.",
+      solution: "Built isolated component modules with clear property interfaces.",
+      role: "Frontend Engineer.",
+      outcomes: [
+        "Reusable layout patterns deployed for rapid prototyping"
+      ]
     }
   }
 ];

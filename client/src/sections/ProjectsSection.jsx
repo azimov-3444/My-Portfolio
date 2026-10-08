@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, Sparkles } from 'lucide-react';
+import { Briefcase, Layers } from 'lucide-react';
 import { projectsData } from '../data/projects';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProjectModal } from '../components/ProjectModal';
@@ -10,18 +10,21 @@ export const ProjectsSection = () => {
   const [filter, setFilter] = useState('ALL');
   const { t } = useLanguage();
 
-  const categories = ['ALL', 'Commercial Project', 'Education Platform', 'Creative Web App', 'Frontend Showcase'];
+  const categories = [
+    { key: 'ALL', label: t('projects.all') },
+    { key: 'projects.commercial', label: t('projects.commercial') },
+    { key: 'projects.education', label: t('projects.education') },
+    { key: 'projects.creative', label: t('projects.creative') },
+    { key: 'projects.showcase', label: t('projects.showcase') }
+  ];
 
   const filteredProjects = projectsData.filter((project) => {
     if (filter === 'ALL') return true;
-    return project.category === filter;
+    return project.categoryKey === filter;
   });
 
-  const featuredProjects = filteredProjects.filter((p) => p.featured);
-  const otherProjects = filteredProjects.filter((p) => !p.featured);
-
   return (
-    <section id="projects" className="py-24 bg-dark-surface/30 border-y border-dark-border/40 relative">
+    <section id="projects" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -34,7 +37,7 @@ export const ProjectsSection = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               {t('projects.title')}
             </h2>
-            <p className="text-slate-400 text-sm max-w-2xl mt-2 font-sans">
+            <p className="text-slate-300 text-sm max-w-2xl mt-2 font-sans leading-relaxed">
               {t('projects.subtitle')}
             </p>
           </div>
@@ -43,61 +46,35 @@ export const ProjectsSection = () => {
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
-                  filter === cat
-                    ? 'bg-brand-emerald text-dark-bg font-semibold shadow-md shadow-brand-emerald/20'
-                    : 'bg-dark-card border border-dark-border text-slate-400 hover:text-white'
+                key={cat.key}
+                onClick={() => setFilter(cat.key)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald ${
+                  filter === cat.key
+                    ? 'bg-brand-emerald text-dark-bg font-bold shadow-sm'
+                    : 'bg-dark-card border border-dark-border text-slate-300 hover:text-white'
                 }`}
               >
-                {cat === 'ALL' ? t('projects.all') : cat}
+                {cat.label}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Featured Showcase Section */}
-        {featuredProjects.length > 0 && (
-          <div className="mb-12 space-y-6">
-            <div className="flex items-center gap-2 font-mono text-xs text-brand-emerald uppercase tracking-wider">
-              <Sparkles className="w-4 h-4" />
-              <span>{t('projects.featuredBadge')}</span>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
-              {featuredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  featured={true}
-                  onOpenDetails={setSelectedProject}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Standard Grid Section */}
-        {otherProjects.length > 0 && (
-          <div className="space-y-6">
-            <div className="flex items-center gap-2 font-mono text-xs text-slate-400 uppercase tracking-wider">
-              <span>{t('projects.allProjectsBadge')}</span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {otherProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onOpenDetails={setSelectedProject}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Selected Projects Showcase Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              featured={project.featured}
+              onOpenDetails={setSelectedProject}
+            />
+          ))}
+        </div>
 
       </div>
 
-      {/* Project Detail Case Study Modal */}
+      {/* Project Detail Modal */}
       {selectedProject && (
         <ProjectModal
           project={selectedProject}

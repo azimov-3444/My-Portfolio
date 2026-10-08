@@ -1,34 +1,50 @@
 import React from 'react';
-import { Code2, Server, Globe, Cpu, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-export const TechBadge = ({ skill, highlight = false }) => {
+export const TechBadge = ({ skill }) => {
+  const { t } = useLanguage();
+
   return (
-    <div
-      className={`group relative p-4 rounded-xl border transition-all duration-300 ${
-        highlight
-          ? 'bg-dark-card/90 border-dark-border hover:border-brand-emerald/40 hover:shadow-glow-emerald'
-          : 'bg-dark-card/50 border-dark-border/60 hover:border-slate-600'
-      }`}
-    >
-      <div className="flex items-start justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-dark-surface border border-dark-border flex items-center justify-center text-brand-emerald group-hover:bg-brand-emerald/10 transition-colors">
-            <Code2 className="w-4 h-4" />
-          </div>
-          <h4 className="font-semibold text-white group-hover:text-brand-emerald transition-colors">
+    <div className="p-4 rounded-xl bg-dark-card border border-dark-border workshop-card flex flex-col justify-between space-y-3">
+      <div>
+        <div className="flex items-center justify-between gap-2 mb-1">
+          <h4 className="font-bold text-white text-sm">
             {skill.name}
           </h4>
+          {skill.badge && (
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-dark-surface border border-dark-border text-brand-emerald font-semibold">
+              {skill.badge}
+            </span>
+          )}
         </div>
-        {skill.badge && (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-dark-surface border border-dark-border text-slate-400">
-            {skill.badge}
-          </span>
-        )}
+
+        <p className="text-xs text-slate-300 leading-relaxed font-sans">
+          {skill.description}
+        </p>
       </div>
 
-      <p className="text-xs text-slate-400 leading-relaxed font-sans line-clamp-2">
-        {skill.description}
-      </p>
+      {/* Connected Project Evidence */}
+      {skill.connectedProject && (
+        <div className="pt-2 border-t border-dark-border/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
+          <div className="flex items-center gap-1.5 truncate max-w-[200px]">
+            <CheckCircle2 className="w-3 h-3 text-brand-emerald flex-shrink-0" />
+            <span className="truncate">{skill.connectedProject}</span>
+          </div>
+
+          {skill.liveUrl && (
+            <a
+              href={skill.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-emerald hover:underline flex items-center gap-1 font-semibold flex-shrink-0"
+            >
+              <span>Evidence</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 };
