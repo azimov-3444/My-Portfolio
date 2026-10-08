@@ -82,15 +82,15 @@ export const Navbar = ({ activeSection }) => {
           {/* Controls & Action */}
           <div className="flex items-center gap-2 sm:gap-3">
             
-            {/* Language Switcher Button (UZ / RU) */}
+            {/* Language Switcher Button (UZ / RU / EN) */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-dark-card border border-dark-border text-slate-300 hover:text-white hover:border-brand-emerald/40 font-mono text-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald"
-              title="Switch Language / Tilni o'zgartirish"
-              aria-label={`Current language ${lang.toUpperCase()}. Click to switch language.`}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-dark-card border border-dark-border text-slate-300 hover:text-white hover:border-brand-emerald/40 font-mono text-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald"
+              title="Switch Language (UZ / RU / EN)"
+              aria-label={`Current language ${lang.toUpperCase()}. Click to switch.`}
             >
               <Globe className="w-3.5 h-3.5 text-brand-emerald" />
-              <span className="font-bold uppercase text-[11px]">{lang}</span>
+              <span className="font-bold uppercase text-[11px] text-brand-emerald">{lang}</span>
             </button>
 
             {/* Light / Dark Mode Toggle Button */}
@@ -149,7 +149,7 @@ export const Navbar = ({ activeSection }) => {
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-surface border border-dark-border text-slate-200 text-xs font-mono"
               >
                 <Globe className="w-4 h-4 text-brand-emerald" />
-                <span>Til: {lang.toUpperCase()}</span>
+                <span>Language: {lang.toUpperCase()}</span>
               </button>
               <a
                 href="#inquiry"

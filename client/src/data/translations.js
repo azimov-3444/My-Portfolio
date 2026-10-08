@@ -8,7 +8,8 @@ export const translations = {
       about: "Men Haqimda",
       skills: "Ko'nikmalar",
       contact: "Inquiry / Aloqa",
-      hireMe: "Loyiha Boshlash"
+      hireMe: "Loyiha Boshlash",
+      langLabel: "O'zbek tili"
     },
     hero: {
       role: "Frontend & Full-Stack Developer",
@@ -22,10 +23,22 @@ export const translations = {
       previewLabel: "Asosiy Loyiha Ko'rinishi",
       previewSub: "999 Premium Tools — Zargarlik uskunalari tijorat katalogi",
       exploreInterface: "Interfeysni O'rganish",
-      howIBuiltIt: "Qanday Yaratilgan? (How I Built It)",
+      howIBuiltIt: "Qanday Yaratilgan?",
       catalogView: "Katalog Ko'rinishi",
       productView: "Mahsulot Sahifasi",
-      mobileView: "Mobile Ko'rinish"
+      mobileView: "Mobile Ko'rinish",
+      searchPlaceholder: "Zargarlik uskunasini qidiring...",
+      filterAll: "Filtr: Barchasi",
+      equipmentTitle1: "Zargarlik Mikromotori",
+      equipmentType1: "Tijorat Uskunasi",
+      equipmentTitle2: "Zargarlik Tarozisi 0.001g",
+      equipmentType2: "Aniq Asbob",
+      specPageTitle: "999 Master Jewelry Polishing Machine",
+      specPageTag: "Mahsulot Parametrlari Sahifasi",
+      touchTitle: "📱 Mobile Sensor UX",
+      touchSub: "Mobil moslashuvchanlik va sensor boshqaruv",
+      realPreview: "Jonli Interfeys Namunasi • 999 Premium Tools",
+      liveSite: "Live Sayt"
     },
     caseStudy: {
       sectionBadge: "TAVSIYA ETILGAN CASE STUDY",
@@ -34,7 +47,7 @@ export const translations = {
       modeExplore: "1. Interfeys Ko'rinishi",
       modeAnnotated: "2. Qanday Yaratilgan? (Texnik Yechimlar)",
       exploreDesc: "Mahsulotlar katalogi, qidiruv va mobil moslashuvchanlikni jonli interfeys namunalarida tekshiring.",
-      annotatedDesc: "Interfeysdagi har bir muhim tugma va bo'lim ustiga bosib, texnik qarorlarni o'rganing.",
+      annotatedDesc: "Interfeysdagi har bir muhim bo'lim ustiga bosib, texnik qarorlarni o'rganing.",
       annotations: [
         {
           id: "nav-search",
@@ -94,7 +107,7 @@ export const translations = {
     about: {
       badge: "MEN HAQIMDA VA ISHLASH USLUBI",
       title: "Muammolarni Hal Qilish va Ishlash Bosqichlari",
-      subtitle: "G'oyadan to tayyor mahsulotgacha bo mezonlarim.",
+      subtitle: "G'oyadan to tayyor mahsulotgacha bo'lgan muhandislik bosqichlarim.",
       introParagraph1: "Men Humoyun Azimov (KyroX) — tijorat va interaktiv web ilovalar yaratuvchi dasturchiman. Murakkab biznes talablarini tushunarli, tez va qulay raqamli mahsulotga aylantirishga e'tibor qarataman.",
       introParagraph2: "Kod yozishda keraksiz bezaklardan qochib, toza komponentlar arxitekturasi, tezlik va qulay foydalanuvchi tajribasini (UX) birinchi o'ringa qo'yaman.",
       processTitle: "Mening Ishlash Jarayonim",
@@ -160,14 +173,23 @@ export const translations = {
       successTitle: "Rahmat! So'rovingiz qabul qilindi.",
       successDesc: "Tez orada siz kiritgan aloqa kanali orqali bog'lanaman.",
       errorTitle: "Xatolik yuz berdi",
-      errorDesc: "Iltimos, qayta urinib ko'ring yoki to'g'ridan-to'g'ri Telegram orqali yozing."
+      errorDesc: "Iltimos, qayta urinib ko'ring yoki to'g'ridan-to'g'ri Telegram orqali yozing.",
+      nextBtn: "Keyingisi",
+      prevBtn: "Orqaga",
+      projectTypes: [
+        { id: 'Web Application', label: 'Tijorat Web Ilovasi / Web App' },
+        { id: 'E-commerce Catalog', label: 'Mahsulot Katalogi / E-commerce' },
+        { id: 'Educational Portal', label: 'Ta\'lim Portali / Education Portal' },
+        { id: 'Custom UI/UX', label: 'Custom UI/UX & Interaktiv Ilova' }
+      ]
     },
     contact: {
       badge: "DIRECT ALOQA",
       title: "Tog'ridan-Tog'ri Bog'lanish",
       subtitle: "Savollaringiz bo'lsa yoki loyihani muhokama qilmoqchi bo'lsangiz, aloqaga chiqing.",
+      telegramAccountLabel: "Telegram Shaxsiy Akkaunt",
+      telegramBotLabel: "KyroX Telegram Bot Assistant",
       emailLabel: "Email Manzil",
-      telegramLabel: "Telegram Profil",
       githubLabel: "GitHub Profil",
       responseTime: "Javob vaqti: Odatda 2-12 soat ichida"
     },
@@ -176,7 +198,8 @@ export const translations = {
       owner: "Humoyun Azimov",
       desc: "Mustaqil dasturchining raqamli ustaxonasi (Digital Workshop).",
       quickLinks: "Tezkor Havolalar",
-      rights: "Barcha huquqlar himoyalangan."
+      rights: "Barcha huquqlar himoyalangan.",
+      backToTop: "Yuqoriga"
     }
   },
   ru: {
@@ -188,7 +211,8 @@ export const translations = {
       about: "Обо мне",
       skills: "Навыки",
       contact: "Запрос / Связь",
-      hireMe: "Начать проект"
+      hireMe: "Начать проект",
+      langLabel: "Русский язык"
     },
     hero: {
       role: "Frontend & Full-Stack Разработчик",
@@ -202,10 +226,22 @@ export const translations = {
       previewLabel: "Главный проект",
       previewSub: "999 Premium Tools — Каталог оборудования для ювелиров",
       exploreInterface: "Исследовать интерфейс",
-      howIBuiltIt: "Как это построено (How I Built It)",
+      howIBuiltIt: "Как это построено?",
       catalogView: "Вид каталога",
       productView: "Страница товара",
-      mobileView: "Мобильный вид"
+      mobileView: "Мобильный вид",
+      searchPlaceholder: "Поиск ювелирного оборудования...",
+      filterAll: "Фильтр: Все",
+      equipmentTitle1: "Ювелирный микромотор",
+      equipmentType1: "Коммерческое оборудование",
+      equipmentTitle2: "Ювелирные весы 0.001г",
+      equipmentType2: "Точный инструмент",
+      specPageTitle: "999 Master Jewelry Polishing Machine",
+      specPageTag: "Страница характеристик товара",
+      touchTitle: "📱 Мобильный Touch UX",
+      touchSub: "Мобильная адаптивность и сенсорный интерфейс",
+      realPreview: "Живой пример интерфейса • 999 Premium Tools",
+      liveSite: "Live Сайт"
     },
     caseStudy: {
       sectionBadge: "РЕКОМЕНДУЕМЫЙ CASE STUDY",
@@ -340,14 +376,23 @@ export const translations = {
       successTitle: "Спасибо! Запрос принят.",
       successDesc: "Я свяжусь с вами в ближайшее время по указанному каналу.",
       errorTitle: "Произошла ошибка",
-      errorDesc: "Пожалуйста, попробуйте еще раз или напишите напрямую в Telegram."
+      errorDesc: "Пожалуйста, попробуйте еще раз или напишите напрямую в Telegram.",
+      nextBtn: "Далее",
+      prevBtn: "Назад",
+      projectTypes: [
+        { id: 'Web Application', label: 'Коммерческое Веб-Приложение' },
+        { id: 'E-commerce Catalog', label: 'Каталог Товаров / Интернет-Магазин' },
+        { id: 'Educational Portal', label: 'Образовательный Портал' },
+        { id: 'Custom UI/UX', label: 'Индивидуальный UI/UX & Интерактив' }
+      ]
     },
     contact: {
       badge: "ПРЯМЫЕ КОНТАКТЫ",
       title: "Прямая Связь",
       subtitle: "Свяжитесь со мной напрямую для обсуждения проекта или сотрудничества.",
+      telegramAccountLabel: "Личный Telegram Аккаунт",
+      telegramBotLabel: "KyroX Telegram Бот Ассистент",
       emailLabel: "Email Адрес",
-      telegramLabel: "Telegram Профиль",
       githubLabel: "GitHub Профиль",
       responseTime: "Время ответа: Обычно от 2 до 12 часов"
     },
@@ -356,7 +401,211 @@ export const translations = {
       owner: "Humoyun Azimov",
       desc: "Цифровая мастерская независимого разработчика (Digital Workshop).",
       quickLinks: "Быстрые ссылки",
-      rights: "Все права защищены."
+      rights: "Все права защищены.",
+      backToTop: "Наверх"
+    }
+  },
+  en: {
+    nav: {
+      brand: "KyroX",
+      owner: "Humoyun Azimov",
+      projects: "Projects",
+      caseStudy: "Process",
+      about: "About Me",
+      skills: "Skills",
+      contact: "Inquiry / Contact",
+      hireMe: "Start a Project",
+      langLabel: "English"
+    },
+    hero: {
+      role: "Frontend & Full-Stack Developer",
+      badge: "Open for Commercial Projects & Roles",
+      greeting: "Humoyun Azimov",
+      brandTag: "KyroX Digital Workshop",
+      headline: "Crafting modern, high-performance web applications.",
+      description: "Building fast web products and intuitive user interfaces (UI/UX) using React, Node.js, and modern engineering principles.",
+      primaryCta: "View Selected Work",
+      secondaryCta: "Discuss a Project",
+      previewLabel: "Primary Commercial Showcase",
+      previewSub: "999 Premium Tools — Professional Jewelry Equipment Catalog",
+      exploreInterface: "Explore Interface",
+      howIBuiltIt: "How I Built It",
+      catalogView: "Catalog View",
+      productView: "Product Specification",
+      mobileView: "Mobile View",
+      searchPlaceholder: "Search jewelry equipment...",
+      filterAll: "Filter: All",
+      equipmentTitle1: "Jewelry Polishing Micro-Motor",
+      equipmentType1: "Commercial Equipment",
+      equipmentTitle2: "Jewelry Scale 0.001g Precision",
+      equipmentType2: "Precision Instrument",
+      specPageTitle: "999 Master Jewelry Polishing Machine",
+      specPageTag: "Product Specification View",
+      touchTitle: "📱 Mobile Touch UX",
+      touchSub: "Responsive mobile touch interface & compact navigation",
+      realPreview: "Faithful Interface Preview • 999 Premium Tools",
+      liveSite: "Live Site"
+    },
+    caseStudy: {
+      sectionBadge: "FEATURED CASE STUDY",
+      sectionTitle: "999 Premium Tools — How I Built It",
+      sectionSubtitle: "Architecture and interface decisions behind a commercial equipment platform.",
+      modeExplore: "1. Explore Interface",
+      modeAnnotated: "2. How I Built It (Technical Decisions)",
+      exploreDesc: "Inspect product catalogs, search optimization, and mobile layout performance.",
+      annotatedDesc: "Click interactive interface annotations to examine engineering decisions.",
+      annotations: [
+        {
+          id: "nav-search",
+          title: "Catalog & Instant Search UX",
+          description: "Engineered modular React state and client-side filtering for sub-second category search across technical equipment.",
+          target: "Top Header & Category Filters"
+        },
+        {
+          id: "product-grid",
+          title: "Product Cards & Visual Hierarchy",
+          description: "Applied clear typographic scale and image lazy loading so technical specifications read clearly for jewelry masters.",
+          target: "Product Grid & Cards"
+        },
+        {
+          id: "mobile-ux",
+          title: "Mobile Touch Architecture",
+          description: "Designed responsive touch targets exceeding 44px and compact drawer navigation for mobile equipment buyers.",
+          target: "Mobile Touch Interface"
+        },
+        {
+          id: "modal-details",
+          title: "Specification Modal UX",
+          description: "Built accessible modal portals for rapid equipment inspection without forcing full page reloads.",
+          target: "Product Specification Modal"
+        }
+      ],
+      context: "Context & Requirement",
+      contextDesc: "Commercial catalog engineered for professional jewelry masters and equipment suppliers.",
+      problem: "Core Problem",
+      problemDesc: "Presenting hundreds of technical machinery items clearly without degrading page load speeds.",
+      solution: "Implemented Solution",
+      solutionDesc: "Integrated modular React components, client-side category filtering, and visual lazy loading.",
+      role: "My Role",
+      roleDesc: "Lead Frontend UI/UX Architecture, component layout, and touch interactions.",
+      outcomesTitle: "Observable Outcomes",
+      outcomes: [
+        "Instant client-side equipment sorting by category",
+        "Fast responsive navigation across desktop and mobile devices",
+        "Clear technical specification presentation for buyers"
+      ]
+    },
+    projects: {
+      badge: "SELECTED PROJECTS",
+      title: "Real Web Projects & Platforms",
+      subtitle: "Production commercial platforms, education concepts, creative web apps, and component labs.",
+      all: "All Projects",
+      commercial: "Commercial Platform",
+      education: "Education Concept",
+      creative: "Creative Web App",
+      showcase: "Component Lab",
+      liveDemo: "Live Site Demo",
+      details: "Project Details",
+      github: "GitHub Repository",
+      verifiedContribution: "Verified Role:",
+      technologies: "Technologies Used:"
+    },
+    about: {
+      badge: "ABOUT ME & WORK PROCESS",
+      title: "Engineering Principles & Work Stages",
+      subtitle: "From requirements gathering to production cloud deployment.",
+      introParagraph1: "I am Humoyun Azimov (KyroX), an independent developer specializing in commercial and interactive web applications. I focus on turning complex business requirements into clear, fast, and accessible digital products.",
+      introParagraph2: "I prioritize clean component architecture, speed, and intuitive user experiences over superficial decorative fillers.",
+      processTitle: "My Development Process",
+      processSteps: [
+        {
+          num: "01",
+          title: "Requirements & User Flow",
+          desc: "Defining clear project goals, user pathways, and technical boundaries."
+        },
+        {
+          num: "02",
+          title: "Modular Architecture",
+          desc: "Structuring clean React and Node.js code modules that are easy to maintain."
+        },
+        {
+          num: "03",
+          title: "UI/UX Craftsmanship",
+          desc: "Building pixel-perfect responsive layouts with accessible touch interactions."
+        },
+        {
+          num: "04",
+          title: "Testing & Deployment",
+          desc: "Auditing code quality and deploying to Vercel, Netlify, or cloud servers."
+        }
+      ]
+    },
+    skills: {
+      badge: "TECHNICAL SKILLS",
+      title: "Skills Connected to Verified Evidence",
+      subtitle: "Every core capability is mapped directly to deployed project work.",
+      connectedProject: "Applied in Project:"
+    },
+    github: {
+      badge: "CODE QUALITY & REPOSITORIES",
+      title: "Clean Architecture & Version Control",
+      desc: "I write modular, documented, and maintainable code. Inspect my repository architecture directly on GitHub.",
+      visitProfile: "Visit GitHub Profile"
+    },
+    inquiry: {
+      badge: "PROJECT INQUIRY BUILDER",
+      title: "Construct Your Project Requirements",
+      subtitle: "Specify project type and preferred contact channel. Direct Telegram messaging supported.",
+      step1Title: "1. Project Type",
+      step2Title: "2. Desired Features",
+      step3Title: "3. Short Description",
+      step4Title: "4. Contact Method",
+      step5Title: "5. Review Brief",
+      contactChoiceTelegram: "Telegram (@username)",
+      contactChoiceEmail: "Email Address",
+      telegramHandleLabel: "Your Telegram Handle",
+      telegramPlaceholder: "@username or t.me/...",
+      emailLabel: "Your Email Address",
+      emailPlaceholder: "name@example.com",
+      nameLabel: "Your Name",
+      namePlaceholder: "Humoyun",
+      messageLabel: "Project Scope or Requirements",
+      messagePlaceholder: "Describe your project goals and key requirements...",
+      summaryTitle: "Constructed Project Brief",
+      submitTelegram: "Send via Telegram",
+      submitForm: "Submit Form",
+      copyBrief: "Copy Brief",
+      copiedNotice: "Brief Copied!",
+      successTitle: "Thank You! Inquiry Received.",
+      successDesc: "I will reach out shortly via your specified contact channel.",
+      errorTitle: "Submission Error",
+      errorDesc: "Please try again or reach out directly via Telegram.",
+      nextBtn: "Next Step",
+      prevBtn: "Back",
+      projectTypes: [
+        { id: 'Web Application', label: 'Commercial Web Application' },
+        { id: 'E-commerce Catalog', label: 'Product Catalog / E-commerce' },
+        { id: 'Educational Portal', label: 'Educational Portal' },
+        { id: 'Custom UI/UX', label: 'Custom UI/UX & Interactive App' }
+      ]
+    },
+    contact: {
+      badge: "DIRECT CONTACT",
+      title: "Direct Channels",
+      subtitle: "Reach out directly to discuss your project or job opportunities.",
+      telegramAccountLabel: "Personal Telegram Account",
+      telegramBotLabel: "KyroX Telegram Bot Assistant",
+      emailLabel: "Email Address",
+      githubLabel: "GitHub Profile",
+      responseTime: "Response time: Typically 2 to 12 hours"
+    },
+    footer: {
+      brand: "KyroX",
+      owner: "Humoyun Azimov",
+      desc: "Independent developer's digital workshop.",
+      quickLinks: "Quick Links",
+      rights: "All rights reserved.",
+      backToTop: "Back to Top"
     }
   }
 };

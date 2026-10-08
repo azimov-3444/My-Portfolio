@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Layers, Smartphone, Monitor, ShoppingBag, Search, Filter, CheckCircle } from 'lucide-react';
+import { ExternalLink, Smartphone, Monitor, ShoppingBag, Search, Filter, CheckCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const HeroProjectPreview = () => {
@@ -72,11 +72,11 @@ export const HeroProjectPreview = () => {
             <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-dark-card border border-dark-border text-xs text-slate-300">
               <div className="flex items-center gap-2 text-slate-400">
                 <Search className="w-4 h-4 text-brand-emerald" />
-                <span>Zargarlik uskunasini qidiring...</span>
+                <span>{t('hero.searchPlaceholder')}</span>
               </div>
               <div className="flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-dark-surface border border-dark-border text-slate-400">
                 <Filter className="w-3 h-3" />
-                <span>Filtr: Barchasi</span>
+                <span>{t('hero.filterAll')}</span>
               </div>
             </div>
 
@@ -87,8 +87,8 @@ export const HeroProjectPreview = () => {
                   [999 Micro-Polisher Engine]
                 </div>
                 <div className="space-y-1">
-                  <div className="text-xs font-bold text-white truncate">Zargarlik Mikromotori</div>
-                  <div className="text-[10px] font-mono text-brand-emerald font-semibold">Commercial Equipment</div>
+                  <div className="text-xs font-bold text-white truncate">{t('hero.equipmentTitle1')}</div>
+                  <div className="text-[10px] font-mono text-brand-emerald font-semibold">{t('hero.equipmentType1')}</div>
                 </div>
               </div>
 
@@ -97,8 +97,8 @@ export const HeroProjectPreview = () => {
                   [999 Precision Scale]
                 </div>
                 <div className="space-y-1">
-                  <div className="text-xs font-bold text-white truncate">Zargarlik Tarozisi 0.001g</div>
-                  <div className="text-[10px] font-mono text-brand-emerald font-semibold">Precision Tool</div>
+                  <div className="text-xs font-bold text-white truncate">{t('hero.equipmentTitle2')}</div>
+                  <div className="text-[10px] font-mono text-brand-emerald font-semibold">{t('hero.equipmentType2')}</div>
                 </div>
               </div>
             </div>
@@ -112,9 +112,9 @@ export const HeroProjectPreview = () => {
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-1">
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-emerald/10 text-brand-emerald border border-brand-emerald/30">
-                    Product Specification Page
+                    {t('hero.specPageTag')}
                   </span>
-                  <h4 className="text-sm font-bold text-white">999 Master Jewelry Polishing Machine</h4>
+                  <h4 className="text-sm font-bold text-white">{t('hero.specPageTitle')}</h4>
                 </div>
                 <span className="text-xs font-mono font-bold text-brand-emerald bg-dark-surface px-2.5 py-1 rounded border border-dark-border">
                   Commercial
@@ -122,14 +122,14 @@ export const HeroProjectPreview = () => {
               </div>
 
               <p className="text-xs text-slate-300 leading-relaxed font-sans">
-                High-precision jewelry finishing equipment catalog UI built with modular React state and client-side category search.
+                {t('hero.description')}
               </p>
 
               <div className="grid grid-cols-2 gap-2 text-[11px] font-mono pt-1 text-slate-400 border-t border-dark-border/60">
                 <div>• Speed: 35,000 RPM</div>
                 <div>• Torque: Heavy-Duty</div>
                 <div>• Voltage: 220V Dual</div>
-                <div>• Delivery: Ready</div>
+                <div>• Status: Ready</div>
               </div>
             </div>
           </div>
@@ -140,15 +140,15 @@ export const HeroProjectPreview = () => {
           <div className="space-y-3 animate-fadeIn flex justify-center">
             <div className="w-full max-w-[260px] p-3 rounded-2xl bg-dark-card border border-dark-border space-y-2.5 shadow-lg">
               <div className="flex items-center justify-between pb-2 border-b border-dark-border text-[10px] font-mono text-slate-400">
-                <span>📱 Mobile Catalog UX</span>
+                <span>{t('hero.touchTitle')}</span>
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
               </div>
               <div className="p-2 rounded-lg bg-dark-surface border border-dark-border text-[11px] font-semibold text-white">
-                🔍 Touch Search & Quick Category Bar
+                🔍 {t('hero.searchPlaceholder')}
               </div>
               <div className="p-2 rounded-lg bg-dark-surface/60 border border-dark-border/60 text-[10px] text-slate-300 space-y-1">
                 <div className="font-bold text-brand-emerald">999 Precision Equipment</div>
-                <div>Mobile responsive touch targets &gt; 44px</div>
+                <div>{t('hero.touchSub')}</div>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ export const HeroProjectPreview = () => {
         <div className="pt-3 border-t border-dark-border flex items-center justify-between font-mono text-[11px]">
           <div className="flex items-center gap-1.5 text-slate-400">
             <CheckCircle className="w-3.5 h-3.5 text-brand-emerald" />
-            <span className="text-[10px]">Real Interface Preview • 999 Premium Tools</span>
+            <span className="text-[10px]">{t('hero.realPreview')}</span>
           </div>
 
           <a
@@ -167,7 +167,7 @@ export const HeroProjectPreview = () => {
             rel="noopener noreferrer"
             className="text-brand-emerald hover:underline flex items-center gap-1 text-[11px] font-semibold"
           >
-            <span>Live Site</span>
+            <span>{t('hero.liveSite')}</span>
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>

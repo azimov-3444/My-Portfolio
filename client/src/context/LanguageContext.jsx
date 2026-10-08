@@ -13,7 +13,11 @@ export const LanguageProvider = ({ children }) => {
   }, [lang]);
 
   const toggleLanguage = () => {
-    setLang((prev) => (prev === 'uz' ? 'ru' : 'uz'));
+    setLang((prev) => {
+      if (prev === 'uz') return 'ru';
+      if (prev === 'ru') return 'en';
+      return 'uz';
+    });
   };
 
   const t = (path) => {
@@ -23,7 +27,16 @@ export const LanguageProvider = ({ children }) => {
       if (current && current[key] !== undefined) {
         current = current[key];
       } else {
-        return path; // Fallback to key path if missing
+        // Fallback to UZ if missing in current lang dictionary
+        let fallback = translations.uz;
+        for (const k of keys) {
+          if (fallback && fallback[k] !== undefined) {
+            fallback = fallback[k];
+          } else {
+            return path;
+          }
+        }
+        return fallback;
       }
     }
     return current;

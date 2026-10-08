@@ -2,42 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-main: #07090E;
-  --bg-surface: #0F131C;
-  --bg-card: #141A26;
-  --border-color: #20293A;
-  --text-heading: #F8FAFC;
-  --text-body: #CBD5E1;
-  --text-muted: #94A3B8;
-  --accent-emerald: #10B981;
-  --accent-cyan: #06B6D4;
-}
-
-html.light {
-  --bg-main: #FAFAFC;
-  --bg-surface: #F1F5F9;
-  --bg-card: #FFFFFF;
-  --border-color: #E2E8F0;
-  --text-heading: #0F172A;
-  --text-body: #334155;
-  --text-muted: #64748B;
-  --accent-emerald: #059669;
-  --accent-cyan: #0284C7;
-}
-
 @layer base {
+  /* Dark Theme Default */
   html.dark body {
     background-color: #07090E;
     color: #CBD5E1;
   }
 
+  /* Light Theme High-Contrast Design */
   html.light body {
-    background-color: #FAFAFC;
-    color: #334155;
+    background-color: #F8FAFC;
+    color: #1E293B;
   }
 
-  /* Accessible focus indicators */
+  /* Accessible Focus Ring */
   :focus-visible {
     outline: 2px solid #10B981;
     outline-offset: 2px;
@@ -49,7 +27,7 @@ html.light {
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -74,7 +52,7 @@ html.light ::-webkit-scrollbar-thumb {
   background: #10B981;
 }
 
-/* Workshops & Product Surfaces */
+/* Workshop Card & Surface Styling */
 .workshop-card {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -89,33 +67,21 @@ html.dark .workshop-card:hover {
   box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.4);
 }
 
+/* LIGHT MODE: Clean White Cards with Crisp Borders & Shadows */
 html.light .workshop-card {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05);
+  background-color: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
 }
 
 html.light .workshop-card:hover {
-  border-color: #059669;
-  box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.08);
+  border-color: #059669 !important;
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.06) !important;
 }
 
-/* Subtle Text Gradient */
-.gradient-text-emerald {
-  background: linear-gradient(135deg, #34D399 0%, #10B981 60%, #059669 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-html.light .gradient-text-emerald {
-  background: linear-gradient(135deg, #059669 0%, #10B981 60%, #047857 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Light Mode Specific Utility Classes */
+/* LIGHT MODE OVERRIDES: Comprehensive High-Contrast System */
 html.light .bg-dark-bg {
-  background-color: #FAFAFC !important;
+  background-color: #F8FAFC !important;
 }
 
 html.light .bg-dark-surface {
@@ -124,13 +90,13 @@ html.light .bg-dark-surface {
 
 html.light .bg-dark-card {
   background-color: #FFFFFF !important;
-  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05) !important;
 }
 
 html.light .border-dark-border {
-  border-color: #E2E8F0 !important;
+  border-color: #CBD5E1 !important;
 }
 
+/* Text Overrides for Pristine Readability */
 html.light .text-white {
   color: #0F172A !important;
 }
@@ -148,15 +114,16 @@ html.light .text-slate-300 {
 }
 
 html.light .text-slate-400 {
-  color: #64748B !important;
+  color: #475569 !important;
 }
 
 html.light .text-slate-500 {
-  color: #94A3B8 !important;
+  color: #64748B !important;
 }
 
+/* Emerald Primary Buttons & Accents */
 html.light .text-brand-emerald {
-  color: #059669 !important;
+  color: #047857 !important;
 }
 
 html.light .bg-brand-emerald {
@@ -170,5 +137,25 @@ html.light .bg-brand-emerald\/10 {
 }
 
 html.light .border-brand-emerald\/30 {
-  border-color: rgba(5, 150, 105, 0.3) !important;
+  border-color: rgba(5, 150, 105, 0.4) !important;
+}
+
+/* Input Fields in Light Mode */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  border-color: #059669 !important;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2) !important;
 }
